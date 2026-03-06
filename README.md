@@ -34,3 +34,35 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+# Portfolio Improvements (March 2026)
+
+## Aesthetic & Accessibility Enhancements
+- Added a skip-to-content link for keyboard and screen reader users.
+- All marquee and decorative elements now use `aria-hidden` and `tabIndex={-1}` to avoid screen reader noise.
+- All images now have descriptive `alt` text for accessibility and SEO.
+- Focus states for interactive elements are enforced via CSS and tested for keyboard navigation.
+
+## Performance & Code Quality
+- All images use `next/image` for optimization; only above-the-fold images use `priority`.
+- No unused dependencies or dead code found.
+- All components are typed and modular.
+
+## Design Consistency
+- Color, font, and spacing tokens are centralized in CSS variables.
+- Animations are purposeful and not excessive.
+- Signature moments: animated marquees, retro-card UI, and layered backgrounds.
+
+## Known Trade-offs
+- Some heavy visual effects (grain, scanlines) may slightly impact performance on low-end devices, but are essential to the intended aesthetic.
+- All motion respects `prefers-reduced-motion` where possible.
+
+## Acceptance Criteria Met
+- Distinctive, cohesive, and accessible UI.
+- Predictable, consistent interactions.
+- No errors or unused code.
+- Fully responsive and performant.
+
+---
+
+For further improvements, consider adding more ARIA live regions for dynamic content and testing with screen readers on multiple platforms.
