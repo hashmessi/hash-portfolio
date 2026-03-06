@@ -1,0 +1,13 @@
+1:"$Sreact.fragment"
+2:I[66853,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/07e0f0bbad96ce36.js","/hash-portfolio/_next/static/chunks/9a073dbc45730203.js","/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js"],"default"]
+3:I[96468,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/07e0f0bbad96ce36.js","/hash-portfolio/_next/static/chunks/9a073dbc45730203.js","/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js"],"default"]
+4:I[79872,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/07e0f0bbad96ce36.js","/hash-portfolio/_next/static/chunks/9a073dbc45730203.js","/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js"],"default"]
+5:I[88169,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/07e0f0bbad96ce36.js","/hash-portfolio/_next/static/chunks/9a073dbc45730203.js","/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js"],"default"]
+6:I[35686,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/07e0f0bbad96ce36.js","/hash-portfolio/_next/static/chunks/9a073dbc45730203.js","/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js"],"default"]
+7:I[5913,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/07e0f0bbad96ce36.js","/hash-portfolio/_next/static/chunks/9a073dbc45730203.js","/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js"],"default"]
+8:I[16358,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/07e0f0bbad96ce36.js","/hash-portfolio/_next/static/chunks/9a073dbc45730203.js","/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js"],"default"]
+9:I[63446,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/07e0f0bbad96ce36.js","/hash-portfolio/_next/static/chunks/9a073dbc45730203.js","/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js"],"default"]
+a:I[97367,["/hash-portfolio/_next/static/chunks/ff1a16fafef87110.js","/hash-portfolio/_next/static/chunks/d2be314c3ece3fbe.js"],"OutletBoundary"]
+b:"$Sreact.suspense"
+0:{"buildId":"yM0bcm12MRO12eCindiEZ","rsc":["$","$1","c",{"children":[["$","div",null,{"className":"flex flex-col w-full","children":[["$","$L2",null,{}],["$","$L3",null,{}],["$","$L4",null,{}],["$","$L5",null,{}],["$","$L6",null,{}],["$","$L7",null,{}],["$","$L8",null,{}],["$","$L9",null,{}]]}],[["$","script","script-0",{"src":"/hash-portfolio/_next/static/chunks/b63d161c72bb1ae9.js","async":true}]],["$","$La",null,{"children":["$","$b",null,{"name":"Next.MetadataOutlet","children":"$@c"}]}]]}],"loading":null,"isPartial":false}
+c:null
