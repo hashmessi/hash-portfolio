@@ -76,9 +76,9 @@ function BootSequence() {
 export default function HeroSection() {
   const ref = useRef<HTMLDivElement>(null);
   const { scrollY } = useScroll();
-  const opacity = useTransform(scrollY, [0, 800], [1, 0]);
-  const floatY1 = useTransform(scrollY, [0, 1000], [0, 150]);
-  const floatY2 = useTransform(scrollY, [0, 1000], [0, 90]);
+  const opacity = useTransform(scrollY, [0, 400, 1200], [1, 1, 0]);
+  const floatY1 = useTransform(scrollY, [0, 1200], [0, 150]);
+  const floatY2 = useTransform(scrollY, [0, 1200], [0, 90]);
   const [booted, setBooted] = useState(false);
 
   useEffect(() => {
@@ -164,7 +164,7 @@ export default function HeroSection() {
             className="block text-retro-beige"
             style={{ textShadow: "5px 5px 0 var(--color-retro-shadow), 10px 10px 0 rgba(204, 51, 34, 0.35)" }}
           >
-            HASHVANTH M U
+            HASHVANTH 
           </span>
           <span
             className="block text-retro-red mt-3"

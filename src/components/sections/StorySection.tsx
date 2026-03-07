@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 
 const timeline = [
   {
-    year: "1",
+    year: "'1",
     title: "FRONTEND ARCHITECTURE",
     desc: "Built foundational frontend systems with React and strictly typed component architectures. Learned the importance of design systems.",
     accent: "#CC3322",

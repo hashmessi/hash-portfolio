@@ -41,7 +41,7 @@ export default function RootLayout({
           antialiased font-terminal
           bg-[#0D0A08] text-[#F5E6C8]
           bg-halftone
-          relative min-h-screen flex flex-col
+          relative min-h-screen flex flex-col overflow-x-hidden
           selection:bg-[#E84545] selection:text-[#F5E6C8]
         `}
       >
