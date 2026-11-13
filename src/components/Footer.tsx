@@ -1,91 +1,134 @@
-import { Github, Linkedin, Mail } from "lucide-react";
+"use client";
+
+import { ArrowUp, Github, Linkedin, Mail, ShieldCheck } from "lucide-react";
+import { MonoBadge } from "@/components/core/MonoBadge";
+import { TactileButton } from "@/components/core/TactileButton";
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
   return (
-    <footer className="relative bg-retro-black overflow-hidden">
-
-      {/* Marquee */}
-      <div className="border-y-2 border-dashed border-retro-border bg-retro-surface py-3 overflow-hidden relative" aria-hidden="true" tabIndex={-1}>
-        <div className="absolute inset-0 retro-stripe-bg" />
-        <div className="flex animate-marquee whitespace-nowrap relative z-10">
-          {Array(10).fill("HASHVANTH M U — AI PRODUCT ENGINEER — ").map((item, i) => (
-            <span key={i} className="mx-6 text-sm font-terminal tracking-[0.2em] uppercase text-retro-red-bright text-retro-shadow-red">
-              {item} ✦
-            </span>
-          ))}
-        </div>
-      </div>
-
-      <div className="container mx-auto relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 divide-y-2 md:divide-y-0 md:divide-x-2 divide-dashed divide-retro-border">
-
-          {/* Brand */}
-          <div className="p-12 md:p-14">
-            <h2 className="text-4xl md:text-5xl font-pixel uppercase tracking-tighter mb-6 leading-none text-retro-red-bright"
-              style={{ textShadow: "4px 4px 0 var(--color-retro-border), 8px 8px 0 rgba(232, 69, 69, 0.2)" }}>
-              HASH
-            </h2>
-            <p className="font-terminal text-lg uppercase tracking-wider max-w-xs mb-8 text-retro-cream-dim">
-              Intelligent AI systems worldwide.
+    <footer className="w-full border-t-2 border-line-bold bg-surface py-16 px-6 lg:px-12 transition-colors">
+      <div className="max-w-6xl mx-auto flex flex-col gap-12">
+        {/* Top row */}
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 pb-8 border-b border-line">
+          <div className="flex flex-col gap-2">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-md bg-accent/10 border border-accent flex items-center justify-center text-accent">
+                <ShieldCheck className="w-3.5 h-3.5" />
+              </div>
+              <span className="font-sans font-bold text-lg text-text">Hashvanth M U</span>
+            </div>
+            <p className="text-sm text-text-2 max-w-md">
+              Building the trust layer for autonomous AI: deterministic runtime guardrails, payment gates, and governed data operations.
             </p>
-            <div className="gumroad-card inline-flex px-4 py-2 text-retro-orange font-terminal text-sm font-bold uppercase shadow-retro-sm">
-              <span className="retro-cursor">STATUS: ONLINE</span>
-            </div>
           </div>
 
-          {/* Nav */}
-          <nav aria-label="Footer navigation" className="p-12 md:p-14 flex flex-col gap-6">
-            <h3 className="font-pixel text-xs font-bold uppercase tracking-widest text-retro-orange">
-              NAVIGATION
-            </h3>
-            <ul className="space-y-4 font-terminal text-xl uppercase">
-              {[
-                { label: "Story", href: "#story" },
-                { label: "FitBridge", href: "#fitbridge" },
-                { label: "Works", href: "#projects" },
-                { label: "Systems", href: "#skills" },
-              ].map((item) => (
-                <li key={item.label}>
-                  <a href={item.href}
-                    className="text-retro-cream-dim hover:text-retro-red transition-colors relative inline-block group">
-                    {item.label}
-                    <div className="absolute bottom-0 left-0 w-0 group-hover:w-full h-0.5 bg-retro-red transition-all duration-200" />
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <div className="flex items-center gap-3">
+            <MonoBadge variant="allow" dot>
+              SYSTEMS GOVERNED
+            </MonoBadge>
+            <TactileButton
+              variant="secondary"
+              size="sm"
+              onClick={scrollToTop}
+              icon={<ArrowUp className="w-3.5 h-3.5" />}
+              aria-label="Back to top"
+            >
+              Back to top
+            </TactileButton>
+          </div>
+        </div>
 
-          {/* Social */}
-          <div className="p-12 md:p-14 flex flex-col gap-6">
-            <h3 className="font-pixel text-xs font-bold uppercase tracking-widest text-retro-orange">
-              CONNECT
-            </h3>
-            <ul className="space-y-5 font-terminal text-xl uppercase">
-              <li>
-                <a href="https://github.com/hashmessi" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-retro-cream-dim hover:text-retro-red transition-colors">
-                  <Github className="w-5 h-5" /> GitHub
-                </a>
-              </li>
-              <li>
-                <a href="https://www.linkedin.com/in/hashvanth-m-u-b60bb7381/" target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-3 text-retro-cream-dim hover:text-retro-orange transition-colors">
-                  <Linkedin className="w-5 h-5" /> LinkedIn
-                </a>
-              </li>
-              <li>
-                <a href="mailto:hashvanthh21@gmail.com"
-                  className="flex items-center gap-3 text-retro-cream-dim hover:text-retro-gold-bright transition-colors">
-                  <Mail className="w-5 h-5" /> Email
-                </a>
-              </li>
-            </ul>
-            <div className="mt-auto text-sm font-terminal uppercase text-retro-cream-dim/60">
-              © {new Date().getFullYear()} ALL RIGHTS RESERVED
-            </div>
+        {/* Middle row: links */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 text-sm">
+          <div className="flex flex-col gap-3">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-text-2">
+              Signature Systems
+            </span>
+            <a href="#signature-work" className="text-text hover:text-accent transition-colors font-mono text-xs">
+              01. TrustPulse
+            </a>
+            <a href="#signature-work" className="text-text hover:text-accent transition-colors font-mono text-xs">
+              02. ChainBreak
+            </a>
+            <a href="#signature-work" className="text-text hover:text-accent transition-colors font-mono text-xs">
+              03. PromiseLoop
+            </a>
+            <a href="#signature-work" className="text-text hover:text-accent transition-colors font-mono text-xs">
+              04. Warden-MCP
+            </a>
           </div>
 
+          <div className="flex flex-col gap-3">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-text-2">
+              Applied & Builds
+            </span>
+            <a href="#applied-ai" className="text-text hover:text-accent transition-colors font-mono text-xs">
+              05. Maruthuva TSL
+            </a>
+            <a href="#applied-ai" className="text-text hover:text-accent transition-colors font-mono text-xs">
+              06. SmartAttend (Rust)
+            </a>
+            <a href="#applied-ai" className="text-text hover:text-accent transition-colors font-mono text-xs">
+              07. Puma-X
+            </a>
+            <a href="#more-builds" className="text-text hover:text-accent transition-colors font-mono text-xs">
+              08. DealClose · FitBridge
+            </a>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-text-2">
+              Connect
+            </span>
+            <a
+              href="https://github.com/hashmessi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+            >
+              <Github className="w-3.5 h-3.5" />
+              <span>GitHub</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/hashvanth-m-u-29470725a/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-text hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+            >
+              <Linkedin className="w-3.5 h-3.5" />
+              <span>LinkedIn</span>
+            </a>
+            <a
+              href="mailto:hashvanth2104@gmail.com"
+              className="text-text hover:text-accent transition-colors flex items-center gap-1.5 text-xs font-mono"
+            >
+              <Mail className="w-3.5 h-3.5" />
+              <span>Email</span>
+            </a>
+          </div>
+
+          <div className="flex flex-col gap-3">
+            <span className="font-mono text-xs font-semibold uppercase tracking-wider text-text-2">
+              Philosophy
+            </span>
+            <p className="text-xs text-text-2 leading-relaxed">
+              &quot;Models suggest. Code decides. Every action is auditable.&quot;
+            </p>
+          </div>
+        </div>
+
+        {/* Bottom row: copyright */}
+        <div className="pt-8 border-t border-line flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-text-2">
+          <span>
+            © 2026 Hashvanth M U · Built with Next.js &amp; Lenis · Trust Layer Architecture
+          </span>
+          <span className="text-[11px]">
+            WCAG 2.1 AA Compliant · Deterministic Execution
+          </span>
         </div>
       </div>
     </footer>
