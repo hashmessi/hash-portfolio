@@ -1,21 +1,8 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
-
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-mono",
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Hashvanth M U | Trust Layer for Autonomous AI",
@@ -67,7 +54,6 @@ export default function RootLayout({
       </head>
       <body
         className={`
-          ${inter.variable} ${jetbrainsMono.variable}
           antialiased font-sans
           bg-bg text-text
           relative min-h-screen flex flex-col overflow-x-hidden
