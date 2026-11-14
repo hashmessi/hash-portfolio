@@ -34,7 +34,8 @@ export interface Project {
 
 export const HERO_CONTENT = {
   eyebrow: "AI Systems Engineer",
-  headline: "I build AI you can trust to act.",
+  headline: "The trust layer for autonomous systems.",
+  tagline: "If it matters in reality, it deserves to be engineered.",
   subhead:
     "AI agents can now browse, pay, delete data and sign deals. I build the systems that decide what they're allowed to do: runtime guardrails, payment gates and governed data operations, where deterministic code has the final say instead of a model's guess.",
   proofStrip: [

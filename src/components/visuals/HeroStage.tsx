@@ -84,7 +84,7 @@ export function HeroStage() {
       </div>
 
       <figcaption className="mt-s3 flex flex-col items-center gap-1 text-center">
-        <span className="type-name">Understand the problem. Then build the fix.</span>
+        <span className="type-name">Understand the problem. Then build the solution.</span>
         <span className="font-mono text-[11px] text-ink-2">↑ that&apos;s me, thinking it through before it ships</span>
       </figcaption>
     </figure>

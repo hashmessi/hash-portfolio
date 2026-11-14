@@ -10,7 +10,10 @@ export default function HeroSection() {
       <Wordmark />
       <div className="grid gap-s7 md:grid-cols-[minmax(0,1fr)_minmax(0,440px)] md:items-center md:gap-s5">
         <div className="flex flex-col gap-s5 md:gap-s6">
-          <h1 className="type-statement max-w-[660px]">{HERO_CONTENT.headline}</h1>
+          <div className="flex flex-col gap-s2">
+            <h1 className="type-statement max-w-[660px]">{HERO_CONTENT.headline}</h1>
+            <p className="type-statement max-w-[660px] italic text-ink-2">{HERO_CONTENT.tagline}</p>
+          </div>
           <p className="type-reading max-w-[620px] text-ink-2">{HERO_CONTENT.subhead}</p>
           <TextLink href="#signature-work" className="type-body w-fit">
             View selected work
