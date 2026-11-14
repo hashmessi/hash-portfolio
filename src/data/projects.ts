@@ -4,6 +4,8 @@ export interface Project {
   tier: "signature" | "applied" | "more";
   name: string;
   award?: string;
+  /** Team size and personal contribution, e.g. "Team of 3 · I built the scoring engine". Rendered only when set. */
+  role?: string;
   oneLiner: string;
   problem: string;
   whatIBuilt: string;
@@ -27,7 +29,7 @@ export interface Project {
     github?: string;
     video?: string;
   };
-  visual?: "trust-dial" | "action-gate" | "promise-seal" | "blast-radius";
+  visual?: "trust-dial" | "action-gate" | "promise-seal" | "blast-radius" | "drift-guard";
 }
 
 export const HERO_CONTENT = {
@@ -38,7 +40,7 @@ export const HERO_CONTENT = {
   proofStrip: [
     { label: "1st Prize, AI Full-Stack Hackathon", icon: "trophy" },
     { label: "Best Cybersecurity Solution, TLN Cybersecurity Challenge", icon: "shield" },
-    { label: "10 products built, 5 with live demos", icon: "zap" },
+    { label: "11 products built, 5 with live demos", icon: "zap" },
   ],
   ctas: [
     { label: "View selected work", href: "#signature-work", primary: true },
@@ -49,7 +51,8 @@ export const HERO_CONTENT = {
 
 export const THESIS_CONTENT = {
   lineA: "AI used to answer questions.",
-  lineB: "Now it takes actions. Who decides what's allowed?",
+  lineB: "Now it takes actions.",
+  question: "So who decides what it's allowed to do?",
   conclusion: "Deterministic code.",
   subtext:
     "As AI moves from answering questions to taking actions, the hard problem changes. It's no longer 'is the output good?' but 'should this action be allowed?' These four systems are my answer.",
@@ -72,7 +75,7 @@ export const MANIFESTO_CONTENT = {
 
 export const RECOGNITION_COUNTERS = [
   { value: "02", label: "Competition Awards", sub: "1st Prize AI Full-Stack · Best Cybersecurity Solution" },
-  { value: "10", label: "Autonomous Builds", sub: "Systems, runtimes & full-stack applications" },
+  { value: "11", label: "Autonomous Builds", sub: "Systems, runtimes & full-stack applications" },
   { value: "05", label: "Live Production Demos", sub: "Deployed & testable right now" },
 ];
 
@@ -81,12 +84,8 @@ export const CONTACT_CONTENT = {
   subhead:
     "I'm looking for AI Engineering, AI Systems, and Forward-Deployed Engineering roles at teams shipping autonomous AI into production. Let's talk.",
   email: "hashvanth2104@gmail.com",
-  links: [
-    { label: "Email Hashvanth", href: "mailto:hashvanth2104@gmail.com", primary: true },
-    { label: "GitHub (@hashmessi)", href: "https://github.com/hashmessi", external: true },
-    { label: "LinkedIn", href: "https://www.linkedin.com/in/hashvanth-m-u-29470725a/", external: true },
-    { label: "Download Résumé", href: "#", download: true },
-  ],
+  github: "https://github.com/hashmessi",
+  linkedin: "https://www.linkedin.com/in/hashvanth-m-u-29470725a/",
 };
 
 export const PROJECTS: Project[] = [
@@ -222,6 +221,38 @@ export const PROJECTS: Project[] = [
   },
   {
     id: "06",
+    slug: "guardian",
+    tier: "applied",
+    name: "Guardian",
+    metric: {
+      label: "Simulated compound-drift scenario: 93.9% lower modeled loss",
+      value: "₹18,511 → ₹1,128",
+    },
+    oneLiner:
+      "Catches injection-molding process drift before defects appear, recommends the smallest safe fix, and verifies recovery before production continues.",
+    problem:
+      "Injection-molding plants often find out a process has drifted only after defective parts are made. Barrel temperature, injection pressure and resin moisture move slowly away from the ideal, and threshold alarms fire too late. Operators are left guessing whether to stop the machine, what caused the drift, what waiting costs, and which lot is already affected.",
+    whatIBuilt:
+      "Guardian is an advisory decision engine for machine-cycle telemetry. It detects early drift, estimates quality risk, weighs the cost of waiting against the cost of acting, recommends the minimum effective intervention, verifies recovery, and scopes the suspect lot. It never writes to machine controllers: operators make every physical adjustment.",
+    outcomes: [
+      "Early drift detection with EWMA, CUSUM, trend and multivariate Mahalanobis monitoring, before conventional alarm limits are crossed",
+      "Gradient-boosted quality-risk classification with calibrated probabilities and root-cause ranking against a defined Quality Contract",
+      "A cost-of-quality engine and constrained optimizer that pick the smallest action within machine, recipe and process-fingerprint limits",
+      "Recovery verification through stability windows and quality checkpoints, plus lot containment from the last known-good cycle to quality release",
+      "Counterfactual replay with Guardian on and off, and deterministic parsing of short operator replies in English, Hindi, Tamil and Kannada",
+    ],
+    keyDecision:
+      "Abstention first: when confidence is too low, Guardian recommends an inspection instead of an action, and it never touches the machine controller itself.",
+    scopeNote:
+      "A local, offline decision-support prototype. Machine data and the quality model are simulated, with no PLC integration. The 93.9% figure comes from the bundled simulator's Scenario 6, not from validated factory savings. Engineering validation: 233 tests passed, 2 skipped, and 10/10 simulator scenarios passed.",
+    stack: ["Python", "FastAPI", "scikit-learn", "NumPy", "SciPy", "React 19", "Vite", "Recharts", "SQLite", "Pytest"],
+    links: {
+      github: "https://github.com/hashmessi/guardian",
+    },
+    visual: "drift-guard",
+  },
+  {
+    id: "07",
     slug: "smartattend",
     tier: "applied",
     name: "SmartAttend",
@@ -246,7 +277,7 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    id: "07",
+    id: "08",
     slug: "puma-x",
     tier: "applied",
     name: "Puma-X",
@@ -270,7 +301,7 @@ export const PROJECTS: Project[] = [
 
   // ── 03. MORE BUILDS ───────────────────────────────────────────────────────
   {
-    id: "08",
+    id: "09",
     slug: "dealclose",
     tier: "more",
     name: "DealClose",
@@ -295,7 +326,7 @@ export const PROJECTS: Project[] = [
     },
   },
   {
-    id: "09",
+    id: "10",
     slug: "fitbridge",
     tier: "more",
     name: "FitBridge",

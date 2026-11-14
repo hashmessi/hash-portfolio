@@ -1,130 +1,174 @@
 @import "tailwindcss";
 
+/* Light-only editorial system (Phase 04). Adapted from extract.studio-DESIGN.md. */
+
 @theme {
-  --color-bg: var(--bg);
-  --color-surface: var(--surface);
-  --color-surface-subtle: var(--surface-subtle);
-  --color-line: var(--line);
-  --color-line-bold: var(--line-bold);
-  --color-text: var(--text);
-  --color-text-2: var(--text-2);
-  --color-accent: var(--accent);
+  /* Editorial palette */
+  --color-paper: var(--paper);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-2-rev: var(--ink-2-rev);
+  --color-green: var(--green);
+  /* Exhibit-only state colors (used inside ink panels) */
+  --color-allow: var(--allow);
   --color-block: var(--block);
   --color-award: var(--award);
 
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+  --font-serif: var(--font-instrument-serif), "Instrument Serif", Georgia, serif;
+  --font-sans: var(--font-instrument-sans), "Instrument Sans", Arial, sans-serif;
+  --font-display: var(--font-archivo), "Archivo", Arial, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, Consolas, monospace;
+
+  /* design.md spacing scale */
+  --spacing-s1: 9.3px;
+  --spacing-s2: 18.5px;
+  --spacing-s3: 23.2px;
+  --spacing-s4: 32.5px;
+  --spacing-s5: 37.1px;
+  --spacing-s6: 64.9px;
+  --spacing-s7: 74.2px;
+  --spacing-s8: 92.7px;
+  --spacing-s9: 111.3px;
+
+  --radius-media: 9.3px;
+  --radius-tag: 5px;
+  --radius-form: 4.6px;
+
+  --container-page: 1320px;
+
+  --ease-editorial: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 :root {
-  /* Editorial Light Mode */
-  --bg: #FBFBFD;
-  --surface: #FFFFFF;
-  --surface-subtle: #F3F3F6;
-  --line: #E2E2E8;
-  --line-bold: #111113;
-  --text: #111113;
-  --text-2: #66666E;
-  --shadow-tactile: 4px 4px 0px 0px #111113;
-  --shadow-tactile-sm: 2px 2px 0px 0px #111113;
-  --accent: #0066CC;
-  --block: #D91F26;
-  --award: #B8860B;
-}
+  --paper: #ffffff;
+  --ink: #070707; /* 20.1:1 on paper, 18.8:1 on green */
+  --ink-2: #5a5a60; /* 6.9:1 on paper, 6.4:1 on green */
+  --ink-2-rev: #a1a1a8; /* 7.9:1 on ink */
+  --green: #e7feda;
+  --rule-soft: #e4e4e0;
 
-[data-theme="dark"],
-.dark {
-  /* Obsidian Dark Mode (Default) */
-  --bg: #0A0A0C;
-  --surface: #121215;
-  --surface-subtle: #1A1A1E;
-  --line: #24242A;
-  --line-bold: #383842;
-  --text: #F4F4F6;
-  --text-2: #92929E;
-  --shadow-tactile: 4px 4px 0px 0px #000000;
-  --shadow-tactile-sm: 2px 2px 0px 0px #000000;
-  --accent: #2997FF;
-  --block: #FF453A;
-  --award: #FFD60A;
+  /* State colors. Paper-safe for now (>=4.5:1 on white) because the visuals still sit on paper;
+     Wave 3 moves them onto ink and switches to #2997ff / #ff453a / #ffd60a (>=5.8:1 on ink). */
+  --allow: #0066cc;
+  --block: #d91f26;
+  --award: #8a6508;
+
+
+  color-scheme: light;
 }
 
 @layer base {
   * {
-    border-color: var(--line);
+    border-color: var(--rule-soft);
   }
   html {
-    scroll-behavior: auto;
-    background-color: var(--bg);
-    color: var(--text);
+    background-color: var(--paper);
+    color: var(--ink);
     font-family: var(--font-sans);
-    transition: background-color 0.2s ease, color 0.2s ease;
   }
   body {
-    background-color: var(--bg);
-    color: var(--text);
+    background-color: var(--paper);
+    color: var(--ink);
     min-height: 100vh;
     overflow-x: hidden;
   }
   ::selection {
-    background-color: var(--accent);
-    color: #FFFFFF;
+    background-color: var(--green);
+    color: var(--ink);
   }
 }
 
-/* ── Gumroad Tactile Utilities ── */
-.shadow-tactile {
-  box-shadow: var(--shadow-tactile);
-}
-.shadow-tactile-sm {
-  box-shadow: var(--shadow-tactile-sm);
+/* ── Type recipes (design.md fluid formulas, 1440px reference) ── */
+@layer components {
+  /* design.md main container: 1320px content + 60px gutters (11/12 of a 1440px window). */
+  .page {
+    width: 100%;
+    max-width: calc(1320px + 120px);
+    margin-inline: auto;
+    padding-inline: 16px;
+  }
+  @media (min-width: 640px) {
+    .page {
+      padding-inline: 60px;
+    }
+  }
+  .type-statement {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(1.75rem, 1.528rem + 1.111vw, 2.972rem);
+    line-height: 1.25;
+  }
+  .type-detail-title {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(2.419rem, 1.967rem + 2.261vw, 4.906rem);
+    line-height: 1.25;
+  }
+  .type-ticker {
+    font-family: var(--font-serif);
+    font-weight: 400;
+    font-size: clamp(3.5rem, 2rem + 5vw, 6.5rem);
+    line-height: 1.5;
+  }
+  .type-label {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(1.424rem, 1.29rem + 0.669vw, 2.16rem);
+    line-height: 1.25;
+  }
+  .type-body {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(1rem, 0.955rem + 0.227vw, 1.25rem);
+    line-height: 1.5;
+  }
+  .type-reading {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(1rem, 0.955rem + 0.227vw, 1.25rem);
+    line-height: 1.4;
+  }
+  .type-name {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: clamp(1rem, 0.955rem + 0.227vw, 1.25rem);
+    line-height: 1.25;
+  }
+  .type-small {
+    font-family: var(--font-sans);
+    font-weight: 400;
+    font-size: clamp(0.889rem, 0.861rem + 0.139vw, 1.042rem);
+    line-height: 1.5;
+  }
 }
 
-.tactile-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 500;
-  border-radius: 0.75rem;
-  border-width: 2px;
-  border-color: var(--line-bold);
-  box-shadow: var(--shadow-tactile);
-  transition: all 120ms cubic-bezier(0.22, 1, 0.36, 1);
-  cursor: pointer;
-  user-select: none;
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
-.tactile-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 5px 5px 0px 0px var(--line-bold);
+/* Closing ticker: 40s linear loop (design.md); the reduced-motion rule above freezes it. */
+@keyframes ticker {
+  to {
+    transform: translateX(-50%);
+  }
+}
+.ticker-track {
+  animation: ticker 40s linear infinite;
 }
 
-.tactile-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 0px 0px 0px 0px var(--line-bold);
-}
-
-.tactile-card {
-  background-color: var(--surface);
-  border: 2px solid var(--line-bold);
-  border-radius: 1rem;
-  box-shadow: var(--shadow-tactile);
-  transition: transform 180ms cubic-bezier(0.22, 1, 0.36, 1), box-shadow 180ms cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.tactile-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 6px 6px 0px 0px var(--line-bold);
-}
-
-/* Custom subtle scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
-::-webkit-scrollbar-track {
-  background: var(--bg);
-}
-::-webkit-scrollbar-thumb {
-  background: var(--line-bold);
-  border-radius: 4px;
+/* Inside ink exhibits the state colors switch to their dark-backing values (>=5.8:1 on #070707). */
+/* Override the Tailwind color names themselves: utilities read --color-*, which resolves at :root. */
+.on-ink {
+  --color-allow: #2997ff;
+  --color-block: #ff453a;
+  --color-award: #ffd60a;
 }

@@ -15,6 +15,7 @@
 | **Phase 01** | **Foundation, Tokens & Shell** | Clean slate, dependencies, dynamic theme engine (dark/light), typography, Gumroad tactile primitives, `projects.ts` data layer, Navbar & Footer. | 3 Waves | Zero CSS/TS errors, theme toggle persists & updates tokens, responsive nav. |
 | **Phase 02** | **Hero, Thesis & Signature Trust Layer** | Apple-style Hero with proof badges, pinned scroll Thesis, and 4 Signature interactive SVG panels (TrustPulse, ChainBreak, PromiseLoop, Warden). | 3 Waves | 60 fps scrub, deterministic SVG states, ALLOW/BLOCK mechanics verified. |
 | **Phase 03** | **Applied AI, Polish & Verification Gate** | Applied AI cards (Maruthuva, SmartAttend, Puma-X), More Builds list, How I Build manifesto, Contact section, case study routes, Lighthouse 95+, WCAG AA. | 3 Waves | Full build passes (`next build`), Lighthouse ≥ 95, 0 contrast failures. |
+| **Phase 04** | **Editorial Redesign** | Light-only editorial system adapted from `extract.studio-DESIGN.md`: Instrument Serif/Sans + Archivo wordmark, floating index nav, ink exhibit tiles, ledgers, green proof band, ticker closing panel. Removes theme toggle and tactile/Gumroad components. | 5 Waves (Waves 1–5 built; Lighthouse and manual a11y pass pending) | Build + lint clean, Lighthouse ≥ 95, design.md Do/Don't checklist passes, 0 contrast failures. |
 
 ---
 

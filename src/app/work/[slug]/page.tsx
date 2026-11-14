@@ -1,256 +1,175 @@
+import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight, ExternalLink, Github, Trophy, ShieldCheck, Cpu } from "lucide-react";
-import { PROJECTS, Project } from "@/data/projects";
-import { TactileCard } from "@/components/core/TactileCard";
-import { TactileButton } from "@/components/core/TactileButton";
-import { MonoBadge } from "@/components/core/MonoBadge";
-import { TrustDial } from "@/components/visuals/TrustDial";
-import { FirewallGate } from "@/components/visuals/FirewallGate";
-import { PromiseSeal } from "@/components/visuals/PromiseSeal";
-import { BlastRadius } from "@/components/visuals/BlastRadius";
+import { PROJECTS, type Project } from "@/data/projects";
+import { demoFor } from "@/components/visuals";
+import { Wordmark } from "@/components/editorial/Wordmark";
+import { RuledHeading } from "@/components/editorial/RuledHeading";
+import { ExhibitTile } from "@/components/editorial/ExhibitTile";
+import { TextLink } from "@/components/editorial/TextLink";
+import { TypeExhibit } from "@/components/editorial/TypeExhibit";
+import { ClosingPanel } from "@/components/editorial/ClosingPanel";
+import { VideoFacade } from "@/components/core/VideoFacade";
 
 export async function generateStaticParams() {
-  return PROJECTS.map((project) => ({
-    slug: project.slug,
-  }));
+  return PROJECTS.map((project) => ({ slug: project.slug }));
 }
 
-export default async function CaseStudyPage({
+export async function generateMetadata({
   params,
 }: {
   params: Promise<{ slug: string }>;
-}) {
+}): Promise<Metadata> {
   const { slug } = await params;
   const project = PROJECTS.find((p) => p.slug === slug);
-
-  if (!project) {
-    notFound();
-  }
-
-  const currentIndex = PROJECTS.findIndex((p) => p.slug === slug);
-  const nextProject = PROJECTS[(currentIndex + 1) % PROJECTS.length];
-
-  const renderVisual = (visualType?: string) => {
-    switch (visualType) {
-      case "trust-dial":
-        return <TrustDial />;
-      case "action-gate":
-        return <FirewallGate />;
-      case "promise-seal":
-        return <PromiseSeal />;
-      case "blast-radius":
-        return <BlastRadius />;
-      default:
-        return null;
-    }
+  if (!project) return {};
+  const title = `${project.name} | Hashvanth M U`;
+  return {
+    title,
+    description: project.oneLiner,
+    openGraph: { title, description: project.oneLiner, type: "article" },
   };
+}
 
+/** One ruled row of the ledger: a label on the left, reading text on the right. */
+function Row({ label, children }: { label: string; children: React.ReactNode }) {
   return (
-    <div className="max-w-5xl mx-auto px-6 lg:px-12 py-12 md:py-20 flex flex-col gap-16">
-      {/* Back button */}
-      <div>
-        <TactileButton
-          size="sm"
-          variant="secondary"
-          href="/#signature-work"
-          icon={<ArrowLeft className="w-3.5 h-3.5" />}
-          iconPosition="left"
-        >
-          Back to all work
-        </TactileButton>
-      </div>
-
-      {/* Hero Header */}
-      <div className="flex flex-col gap-6">
-        <div className="flex flex-wrap items-center gap-3">
-          <span className="font-mono font-bold text-xs text-accent px-2.5 py-1 rounded-md border border-line-bold bg-surface-subtle">
-            PROJECT {project.id} // {project.tier.toUpperCase()}
-          </span>
-          {project.award && (
-            <MonoBadge variant="award">
-              {project.award}
-            </MonoBadge>
-          )}
-          {project.metric && (
-            <MonoBadge variant="allow">
-              {project.metric.label}: {project.metric.value}
-            </MonoBadge>
-          )}
-        </div>
-
-        <h1 className="text-4xl sm:text-6xl font-extrabold font-sans tracking-tight text-text leading-tight">
-          {project.name}
-        </h1>
-
-        <p className="text-xl sm:text-2xl text-text-2 font-medium max-w-3xl leading-relaxed">
-          {project.oneLiner}
-        </p>
-
-        {/* Action links */}
-        <div className="flex flex-wrap items-center gap-4 pt-2">
-          {project.links.demo && (
-            <TactileButton
-              size="md"
-              variant="primary"
-              href={project.links.demo}
-              external
-              icon={<ExternalLink className="w-4 h-4" />}
-            >
-              Launch live production demo
-            </TactileButton>
-          )}
-          {project.links.github && (
-            <TactileButton
-              size="md"
-              variant="secondary"
-              href={project.links.github}
-              external
-              icon={<Github className="w-4 h-4" />}
-            >
-              View source on GitHub
-            </TactileButton>
-          )}
-        </div>
-      </div>
-
-      {/* Interactive Visual State Machine (if signature project) */}
-      {project.visual && (
-        <div className="flex flex-col gap-3">
-          <div className="flex items-center gap-2">
-            <Cpu className="w-4 h-4 text-accent" />
-            <span className="font-mono text-xs uppercase tracking-wider font-bold text-text-2">
-              Interactive System State Machine
-            </span>
-          </div>
-          <div className="max-w-2xl">
-            {renderVisual(project.visual)}
-          </div>
-        </div>
-      )}
-
-      {/* Problem & Solution Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 pt-8 border-t border-line">
-        <TactileCard className="p-6 md:p-8 flex flex-col gap-4">
-          <span className="font-mono text-xs font-bold uppercase tracking-wider text-block">
-            01. The Problem Space
-          </span>
-          <p className="text-sm sm:text-base text-text-2 leading-relaxed">
-            {project.problem}
-          </p>
-        </TactileCard>
-
-        <TactileCard className="p-6 md:p-8 flex flex-col gap-4">
-          <span className="font-mono text-xs font-bold uppercase tracking-wider text-accent">
-            02. What I Engineered
-          </span>
-          <p className="text-sm sm:text-base text-text-2 leading-relaxed">
-            {project.whatIBuilt}
-          </p>
-        </TactileCard>
-      </div>
-
-      {/* Key Decision Pull-Quote */}
-      {project.keyDecision && (
-        <div className="p-6 sm:p-8 rounded-2xl border-l-4 border-accent border-y-2 border-r-2 border-line-bold bg-surface shadow-tactile flex flex-col gap-2">
-          <span className="font-mono text-xs font-bold uppercase tracking-wider text-accent">
-            Core Architectural Decision
-          </span>
-          <p className="text-lg sm:text-2xl font-bold font-sans text-text italic leading-snug">
-            &quot;{project.keyDecision}&quot;
-          </p>
-          <span className="font-mono text-[11px] text-text-2">
-            Enforced by deterministic code, never LLM probability.
-          </span>
-        </div>
-      )}
-
-      {/* Extension section if present */}
-      {project.extension && (
-        <TactileCard className="p-6 md:p-8 flex flex-col gap-3 border-dashed">
-          <div className="flex items-center justify-between">
-            <span className="font-mono text-xs font-bold uppercase tracking-wider text-text">
-              Extension: {project.extension.name}
-            </span>
-            {project.extension.github && (
-              <a
-                href={project.extension.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-mono text-accent hover:underline flex items-center gap-1 font-semibold"
-              >
-                GitHub ↗
-              </a>
-            )}
-          </div>
-          <p className="text-sm text-text-2 leading-relaxed">
-            {project.extension.description}
-          </p>
-        </TactileCard>
-      )}
-
-      {/* Outcomes & Verifiable Evidence */}
-      <div className="flex flex-col gap-4 pt-6 border-t border-line">
-        <span className="font-mono text-xs font-bold uppercase tracking-wider text-text">
-          Outcomes &amp; Verifiable Capabilities
-        </span>
-        <div className="grid grid-cols-1 gap-3">
-          {project.outcomes.map((bullet, idx) => (
-            <div
-              key={idx}
-              className="p-4 rounded-xl border border-line bg-surface-subtle flex items-start gap-3 text-sm text-text"
-            >
-              <span className="font-mono font-bold text-accent text-xs mt-0.5">
-                [0{idx + 1}]
-              </span>
-              <span>{bullet}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Tech Stack Matrix */}
-      <div className="flex flex-col gap-3 pt-6 border-t border-line">
-        <span className="font-mono text-xs font-bold uppercase tracking-wider text-text">
-          Engineered With
-        </span>
-        <div className="flex flex-wrap gap-2">
-          {project.stack.map((tech) => (
-            <span
-              key={tech}
-              className="px-3 py-1 rounded-lg text-xs font-mono font-semibold border-2 border-line-bold bg-surface shadow-tactile-sm text-text"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-
-      {/* Next Project Footer Card */}
-      <div className="pt-12 border-t-2 border-line-bold">
-        <Link
-          href={`/work/${nextProject.slug}`}
-          className="group block p-8 rounded-2xl border-2 border-line-bold bg-surface shadow-tactile hover:-translate-y-1 hover:shadow-[6px_6px_0px_var(--line-bold)] transition-all"
-        >
-          <div className="flex items-center justify-between">
-            <div className="flex flex-col gap-1">
-              <span className="font-mono text-xs font-bold uppercase text-accent">
-                Next Project →
-              </span>
-              <span className="text-2xl sm:text-3xl font-bold font-sans text-text group-hover:text-accent transition-colors">
-                {nextProject.name}
-              </span>
-              <span className="text-sm text-text-2">
-                {nextProject.oneLiner}
-              </span>
-            </div>
-            <div className="w-12 h-12 rounded-xl border-2 border-line-bold bg-surface-subtle flex items-center justify-center text-text group-hover:bg-accent group-hover:text-white transition-all">
-              <ArrowRight className="w-5 h-5" />
-            </div>
-          </div>
-        </Link>
-      </div>
+    <div className="grid gap-s2 border-t border-ink py-s3 md:grid-cols-[minmax(0,1fr)_minmax(0,2fr)] md:gap-s5">
+      <dt className="type-name">{label}</dt>
+      <dd className="type-reading max-w-[836px]">{children}</dd>
     </div>
   );
 }
 
+/** The project's exhibit: its interactive demo when it has one, otherwise a typographic one. */
+function Exhibit({ project }: { project: Project }) {
+  const demo = demoFor(project);
+  return demo ? (
+    <div className="mx-auto w-full max-w-[880px] overflow-hidden rounded-media bg-ink">
+      {demo}
+    </div>
+  ) : (
+    <TypeExhibit text={project.keyDecision ?? project.oneLiner} />
+  );
+}
+
+export default async function CaseStudyPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const index = PROJECTS.findIndex((p) => p.slug === slug);
+  if (index === -1) notFound();
+  const project = PROJECTS[index];
+  const others = [1, 2].map((step) => PROJECTS[(index + step) % PROJECTS.length]);
+
+  return (
+    <>
+      <article className="page flex flex-col gap-s8 pt-s6">
+        {/* Compact identity: the billboard wordmark, shrunk, links home. */}
+        <div className="flex items-start justify-between gap-s3">
+          <Link href="/" className="block w-[165px] shrink-0" aria-label="Home">
+            <Wordmark />
+          </Link>
+          <p className="type-small pt-s1 text-right text-ink-2">
+            Case study · {project.id} · {project.name}
+            {project.award && <span className="block sm:inline"> · {project.award.replace(/^\S+\s/, "")}</span>}
+          </p>
+        </div>
+
+        <h1 className="type-detail-title max-w-[880px]">{project.oneLiner}</h1>
+
+        <Exhibit project={project} />
+
+        {project.links.video && (
+          <div className="mx-auto w-full max-w-[880px]">
+            <VideoFacade url={project.links.video} title={`${project.name} demo video`} />
+          </div>
+        )}
+
+        {/* Reading copy on the left, metadata on the right. */}
+        <div className="grid gap-s6 md:grid-cols-[minmax(0,2fr)_minmax(0,1fr)]">
+          <div className="flex flex-col gap-s3 type-reading max-w-[836px]">
+            <p>
+              <span className="type-name">The problem. </span>
+              {project.problem}
+            </p>
+            <p>
+              <span className="type-name">What I built. </span>
+              {project.whatIBuilt}
+            </p>
+          </div>
+          <div className="type-small flex flex-col gap-s3">
+            <dl className="flex flex-col gap-s3">
+            {project.role && (
+              <div>
+                <dt className="type-name">Role</dt>
+                <dd className="text-ink-2">{project.role}</dd>
+              </div>
+            )}
+            <div>
+              <dt className="type-name">Stack</dt>
+              <dd className="text-ink-2">{project.stack.join(", ")}</dd>
+            </div>
+            </dl>
+            <div className="flex flex-wrap gap-x-s3 gap-y-s1 pt-s1">
+              {project.links.demo && (
+                <TextLink href={project.links.demo} context={project.name}>
+                  Live demo
+                </TextLink>
+              )}
+              {project.links.github && (
+                <TextLink href={project.links.github} context={project.name}>
+                  GitHub
+                </TextLink>
+              )}
+              {project.links.video && (
+                <TextLink href={project.links.video} context={project.name}>
+                  Demo video
+                </TextLink>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Ledger: decision, outcomes and scope as ruled rows. */}
+        <dl className="flex flex-col">
+          {project.keyDecision && <Row label="Key decision">{project.keyDecision}</Row>}
+          {project.outcomes.map((outcome, i) => (
+            <Row key={outcome} label={`Outcome ${String(i + 1).padStart(2, "0")}`}>
+              {outcome}
+            </Row>
+          ))}
+          {project.extension && (
+            <Row label={`Extension: ${project.extension.name}`}>
+              {project.extension.description}
+              {project.extension.github && (
+                <>
+                  {" "}
+                  <TextLink href={project.extension.github} context={project.extension.name}>
+                    GitHub
+                  </TextLink>
+                </>
+              )}
+            </Row>
+          )}
+          {project.scopeNote && <Row label="Scope">{project.scopeNote}</Row>}
+          {project.builtVsNext && <Row label="Built vs. next">{project.builtVsNext}</Row>}
+          {project.result && <Row label="Result">{project.result}</Row>}
+        </dl>
+      </article>
+
+      <section aria-labelledby="more-work" className="page mt-s9 flex flex-col gap-s6">
+        <RuledHeading id="more-work" title="More work." />
+        <div className="grid gap-x-s5 gap-y-s7 md:grid-cols-2">
+          {others.map((p) => (
+            <ExhibitTile key={p.slug} name={p.name} href={`/work/${p.slug}`} descriptor={p.oneLiner}>
+              <Exhibit project={p} />
+            </ExhibitTile>
+          ))}
+        </div>
+      </section>
+
+      <div className="mt-s9">
+        <ClosingPanel />
+      </div>
+    </>
+  );
+}

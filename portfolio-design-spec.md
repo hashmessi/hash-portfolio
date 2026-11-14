@@ -2,83 +2,80 @@
 
 **Owner:** Hashvanth M U  
 **Positioning:** *"I build the trust layer for autonomous AI."*  
-**Aesthetic World:** **Apple/Meta Cinematic Clarity × Gumroad Neo-Retro Tactility**  
-**Theme Engine:** Obsidian Dark Mode (Default) + Crisp Dynamic Light Mode Toggle  
-**Status:** **Locked v2.0** — Approved via Senior Product & UI Audit  
+**Aesthetic World:** Editorial billboard rhythm (adapted from extract.studio-DESIGN.md)
+**Theme:** Light only
+**Status:** **v3.0 Editorial** (Phase 04). Supersedes the v2.0 visual system (dark default, Gumroad tactile components).
 
 ---
 
-## 1. Design Philosophy & Aesthetic Fusion
+## 1. Design Philosophy & Aesthetic (v3.0 Editorial)
 
-This site solves a specific challenge: **How to present elite, technical AI systems engineering with immediate product authority, playful physical tactility, and zero corporate blandness.**
+Adapted from `extract.studio-DESIGN.md`: an editorial studio system, applied to a personal engineering portfolio. Adapt the pattern, don't copy the studio's name, wordmark, copy, imagery or ticker phrase.
 
-The visual architecture fuses three distinct disciplines:
-1. **Apple Product Pacing:** One idea per viewport, generous whitespace (128px section margins), fluid typography scale, and seamless scroll choreography (Lenis + GSAP ScrollTrigger).
-2. **Meta / Linear Product Clarity:** High-signal information architecture, quiet micro-UI, JetBrains Mono technical telemetry, explicit causal flows, and zero fake decorative gradients or 3D gimmicks.
-3. **Gumroad Neo-Retro Tactile Energy:** Chunky geometric borders (1.5px–2px solid ink), physical offset drop-shadows (`3px 3px 0px` / `4px 4px 0px`), tactile mechanical press states (`active:translate-x-[2px] active:translate-y-[2px] active:shadow-none`), high-contrast pill tags, and bold card surfaces that feel physical to the touch.
+1. **Billboard, then proposition.** A full-width heavy wordmark opens the page; a serif statement follows in a half-width measure.
+2. **Typeset, not engineered.** Serif statements at regular weight; grotesk for captions and names; sentence case throughout.
+3. **Exhibits, not cards.** Each interactive demo sits on an ink panel with its caption below. No box shadows, no pills, no gradient surfaces.
+4. **Color belongs to the work.** White paper and near-black ink carry the page. The pale green fills one proof band. Blue, red and gold appear only inside the ink demos.
+5. **Deterministic code decides.** The demos are state machines driven by real rules; they are never decorative.
 
-### Core Invariants
-1. **One Idea Per Screen:** Every viewport communicates exactly one technical thesis or project mechanic.
-2. **Deterministic Code Decides:** Visuals are not passive screenshots; they are interactive, deterministic state machines (Bayesian dials, firewall gates, receipt seals, blast-radius graphs).
-3. **Physical Tactility in Both Modes:** Dark mode uses luminous obsidian with crisp structural borders and sharp ink offsets; Light mode provides high-contrast editorial punch with bold ink borders and deep solid shadows.
-4. **Fast is Non-Negotiable:** 60 fps GPU-accelerated scroll, zero layout shift (CLS < 0.02), LCP < 1.8s, static Next.js export.
+### Core invariants
+1. One idea per section; the rule-and-heading structure separates them.
+2. Light only. The theme toggle and dark tokens were removed in Phase 04.
+3. Motion is optional: all loops and the thesis pin stop under `prefers-reduced-motion`.
+4. Static Next.js export; no layout shift from fonts (`next/font`, `display: swap`).
 
 ---
 
-## 2. Dynamic Design Tokens
+## 2. Design Tokens (v3.0)
 
-### 2.1 Color Tokens & Theme Matrix
+### 2.1 Colors
 
-| Token | Light Mode (Editorial Neo-Retro) | Dark Mode (Default Obsidian Neo-Retro) | Role / Usage |
+| Token | Value | Role | Contrast |
 |---|---|---|---|
-| `--bg` | `#FBFBFD` (Apple Warm White) | `#0A0A0C` (Deep Obsidian) | Page canvas |
-| `--surface` | `#FFFFFF` (Pure Card White) | `#121215` (Elevated Obsidian Surface) | Cards, panels, modals |
-| `--surface-subtle` | `#F3F3F6` (Muted Grey) | `#1A1A1E` (Inset Row Surface) | Tag pills, nested blocks, code containers |
-| `--line` | `#E2E2E8` (Subtle Divider) | `#24242A` (Low-contrast structural line) | Hairlines, inner grid dividers |
-| `--line-bold` | `#111113` (High-contrast Ink) | `#383842` / `#4E4E5A` (Tactile Edge) | Gumroad card/button borders (1.5px–2px) |
-| `--text` | `#111113` (Deep Carbon) | `#F4F4F6` (Crisp Titanium White) | Primary display & body copy |
-| `--text-2` | `#66666E` (Neutral Charcoal) | `#92929E` (Muted Monospace Grey) | Secondary descriptions, metadata, labels |
-| `--shadow-tactile` | `4px 4px 0px 0px #111113` | `4px 4px 0px 0px #000000` | Gumroad solid offset drop shadow |
-| `--shadow-tactile-sm` | `2px 2px 0px 0px #111113` | `2px 2px 0px 0px #000000` | Small tags, badges, secondary buttons |
-| `--accent` | `#0066CC` (Electric Royal Blue) | `#2997FF` (Apple Signal Blue) | ALLOW state, active links, primary CTA |
-| `--block` | `#D91F26` (Firewall Red) | `#FF453A` (Vivid Crimson) | BLOCK state, security rejections |
-| `--award` | `#B8860B` (Amber Gold) | `#FFD60A` (Luminous Neon Gold) | Hackathon & trophy badges |
+| `--paper` | `#FFFFFF` | Canvas, index, tags | — |
+| `--ink` | `#070707` | Text, 1px rules, exhibit and closing panels | 20.1:1 on paper |
+| `--ink-2` | `#5A5A60` | Secondary text | 6.9:1 on paper, 6.4:1 on green |
+| `--ink-2-rev` | `#A1A1A8` | Secondary text on ink | 7.9:1 |
+| `--green` | `#E7FEDA` | Proof band, active index item, selection | — |
+| `--rule-soft` | `#E4E4E0` | Non-ink dividers | decorative |
+| `--allow` / `--block` / `--award` (paper) | `#0066CC` / `#D91F26` / `#8A6508` | Only where text sits on paper | 5.6 / 5.0 / 5.3:1 |
+| `--allow` / `--block` / `--award` (on ink, `.on-ink`) | `#2997FF` / `#FF453A` / `#FFD60A` | Demo state colors | 6.7 / 5.9 / 14.3:1 on ink |
 
----
+All text pairs were computed with the WCAG formula; the lowest text pair is 5.0:1.
 
-### 2.2 Typography Scale
+### 2.2 Typography
 
-- **Sans Display & Body:** `Inter Variable` (self-hosted, `-0.03em` tracking on display, `0` tracking on body).
-- **Technical Monospace:** `JetBrains Mono Variable` (used for hashes, causal lineages, payload states, stack tags, award badges).
+| Role | Font | Notes |
+|---|---|---|
+| Statements, titles, ticker | **Instrument Serif** 400 | Regular weight only; italic for the thesis conclusion |
+| Body, captions, labels, UI | **Instrument Sans** 400 / 700 | Bold for names; normal tracking |
+| Wordmark | **Archivo** (wdth 62–125, wght 900) | SVG text, fitted to width |
+| Demo telemetry | JetBrains Mono | Inside ink exhibits only |
 
-| Token | Size | Weight | Tracking | Application |
+Recipes (`globals.css`, fluid `clamp()` formulas from design.md):
+
+| Class | Font | Size (1440px) | Line height | Use |
 |---|---|---|---|---|
-| `display` | `clamp(44px, 7vw, 100px)` | 700 | `-0.04em` | Hero statement, thesis statement |
-| `h1` | `clamp(36px, 5vw, 64px)` | 700 | `-0.03em` | Major section headers |
-| `h2` | `clamp(26px, 3.2vw, 40px)` | 600 | `-0.02em` | Project titles, modal headers |
-| `h3` | `20px` | 600 | `-0.01em` | Card titles, step labels |
-| `body-lg` | `20px` | 400 | `0` | Lead thesis paragraph, hero subhead |
-| `body` | `16px` | 400 | `0` | Card copy, outcome bullets, about copy |
-| `mono-sm` | `13px` | 500 | `0.02em` | Stack tags, commit hashes, latency metrics |
-| `caption` | `12px` | 600 | `0.05em` | Eyebrow tags, award chips, section indicators |
+| `type-statement` | Serif | 44px | 1.25 | Proposition, thesis lines, manifesto |
+| `type-detail-title` | Serif | 69px | 1.25 | Case-study one-liner |
+| `type-ticker` | Serif | 104px | 1.5 | Closing ticker |
+| `type-label` | Sans | 34px | 1.25 | Ruled section headings |
+| `type-body` / `type-reading` | Sans | 21px | 1.5 / 1.4 | Captions and reading copy |
+| `type-name` | Sans 700 | 21px | 1.25 | Project names, row labels |
+| `type-small` | Sans | 18px | 1.5 | Index, tags, utility text |
 
----
+Minimum rendered size: 11px (the 0/50/100 scale numbers on the dial are decorative and exempt).
 
-### 2.3 Tactile Components & Geometry
+### 2.3 Space, radius, motion
+- Spacing: 9.3, 18.5, 23.2, 32.5, 37.1, 64.9, 74.2, 92.7, 111.3px (design.md scale, `--spacing-s1`…`s9`).
+- Container: 1320px content, 60px gutters at ≥640px, 16px below.
+- Radius: 9.3px media and index, 5px tags, 4.6px form. Nothing else is rounded.
+- Motion: color 0.2s `cubic-bezier(.4,0,.2,1)`; closing ticker 40s linear; thesis scrub on scroll (Framer Motion `useScroll`); all disabled under reduced motion.
 
-1. **Gumroad Tactile Button (Primary):**
-   - Base: `bg-accent text-white font-medium rounded-xl border-2 border-line-bold shadow-tactile`
-   - Hover: `hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0px_var(--line-bold)]`
-   - Active (Press): `active:translate-x-1 active:translate-y-1 active:shadow-none`
-   - Transition: `transition-all duration-100 ease-out`
-2. **Gumroad Tactile Button (Secondary / Neutral):**
-   - Base: `bg-surface text-text font-medium rounded-xl border-2 border-line-bold shadow-tactile`
-   - Interaction: Same tactile press mechanics.
-3. **Neo-Retro Card Container:**
-   - Base: `bg-surface border-2 border-line-bold rounded-2xl p-6 md:p-8 shadow-tactile transition-transform duration-200`
-   - Hover: `hover:-translate-y-1 hover:shadow-[6px_6px_0px_var(--line-bold)]`
-4. **Monospace Badge Pill:**
-   - Base: `inline-flex items-center gap-1.5 px-2.5 py-1 text-xs font-mono rounded-md border border-line-bold bg-surface-subtle text-text-2`
+### 2.4 Components
+Editorial primitives in `src/components/editorial/`: `FloatingIndex`, `ClosingPanel`, `TextLink`, `RuledHeading`, `ExhibitTile`, `LedgerRow`, `Wordmark`, `TypeExhibit`. Demos in `src/components/visuals/` share `Exhibit` and `ScenarioToggle`.
+
+> **Scope of v3.0:** §1–2 are rewritten here. §3 (copy lock) and §4 (file structure) were written for v2.0; the copy in §3 still holds, but the component names in §4 are outdated. See `.planning/phases/04-editorial-redesign/PLAN.md` for the current structure.
 
 ---
 
@@ -97,16 +94,17 @@ Content source: `Portfolio — Final Website Copy.md` (Verbatim truth).
 - **Actions:**
   - `View selected work ↓` (Gumroad Primary Button)
   - `GitHub ↗` (Gumroad Secondary Button)
-  - `Résumé ↗` (Gumroad Secondary Button)
+  - `Contact` (Gumroad Secondary Button). Per the copy doc; Résumé lives in Contact once the PDF exists.
 - **Theme Toggle:** Floating or navbar-docked segmented tactile pill switch (`[ ☾ Dark ]` / `[ ☼ Light ]`).
 
 ---
 
 ### 02 Thesis Section (Apple-style Pinned Scroll Narrative)
-- Pinned viewport scrub:
+- Pinned viewport scrub (300vh track, sticky viewport, Framer Motion `useScroll`, no GSAP):
   - Phase 1: *"AI used to answer questions."*
   - Phase 2 (Crossfade): *"Now it takes actions."*
   - Phase 3 (Accent lock): *"So who decides what it's allowed to do? Deterministic code."*
+  - Reduced motion: no pin; all three lines render as a static stack.
 
 ---
 
@@ -116,7 +114,9 @@ Intro: *"As AI moves from answering questions to taking actions, the hard proble
 
 Each project card features:
 - Left: Editorial copy, problem, solution, 3 outcome bullets, key decision pull-quote, tech stack pills, and live demo / GitHub links.
-- Right: Custom interactive SVG/Canvas state-machine visual.
+- Right: a gate strip (`input → [gate] → effect`) showing where the deterministic check sits, then the interactive state-machine visual. Every toggle exposes `aria-pressed`, and the state is announced through a polite live region.
+- PromiseLoop: click-to-load YouTube facade under the visual (no iframe until clicked).
+- Optional `role` line (team size and contribution), rendered only when the data has it.
 
 #### Project 01: TrustPulse
 - **Award:** 🏆 `Overall 1st Prize, AI Full-Stack Hackathon`
@@ -195,7 +195,7 @@ Intro: *"These projects take models off the benchmark page and put them in front
 
 ---
 
-### 07 Recognition & Live Metrics
+### 07 Recognition & Live Metrics (folded into 06: counters row at the end of the Manifesto section, not a separate section)
 - Tactile counter cards:
   - `[ 02 ]` Hackathon & Challenge Awards
   - `[ 10 ]` Autonomous Products & Systems Engineered

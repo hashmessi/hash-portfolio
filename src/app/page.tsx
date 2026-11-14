@@ -1,21 +1,21 @@
 import HeroSection from "@/components/sections/HeroSection";
 import ThesisSection from "@/components/sections/ThesisSection";
 import SignatureSection from "@/components/sections/SignatureSection";
-import AppliedAISection from "@/components/sections/AppliedAISection";
-import MoreBuildsSection from "@/components/sections/MoreBuildsSection";
+import AppliedAISection, { MoreBuildsSection } from "@/components/sections/AppliedAISection";
 import ManifestoSection from "@/components/sections/ManifestoSection";
-import ContactSection from "@/components/sections/ContactSection";
+import { ClosingPanel } from "@/components/editorial/ClosingPanel";
 
 export default function Home() {
+  // Block, not flex-col: in a flex column, mx-auto sections size to min-content and a nowrap row inflates the page on mobile.
   return (
-    <div className="flex flex-col w-full">
+    <div className="w-full">
       <HeroSection />
       <ThesisSection />
       <SignatureSection />
       <AppliedAISection />
       <MoreBuildsSection />
       <ManifestoSection />
-      <ContactSection />
+      <ClosingPanel surround="green" />
     </div>
   );
 }
