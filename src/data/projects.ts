@@ -40,7 +40,7 @@ export const HERO_CONTENT = {
   proofStrip: [
     { label: "1st Prize, AI Full-Stack Hackathon", icon: "trophy" },
     { label: "Best Cybersecurity Solution, TLN Cybersecurity Challenge", icon: "shield" },
-    { label: "11 products built, 5 with live demos", icon: "zap" },
+    { label: "10 products built, 5 with live demos", icon: "zap" },
   ],
   ctas: [
     { label: "View selected work", href: "#signature-work", primary: true },
@@ -75,7 +75,7 @@ export const MANIFESTO_CONTENT = {
 
 export const RECOGNITION_COUNTERS = [
   { value: "02", label: "Competition Awards", sub: "1st Prize AI Full-Stack · Best Cybersecurity Solution" },
-  { value: "11", label: "Autonomous Builds", sub: "Systems, runtimes & full-stack applications" },
+  { value: "10", label: "Autonomous Builds", sub: "Systems, runtimes & full-stack applications" },
   { value: "05", label: "Live Production Demos", sub: "Deployed & testable right now" },
 ];
 
