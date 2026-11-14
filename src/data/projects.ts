@@ -34,7 +34,7 @@ export interface Project {
 
 export const HERO_CONTENT = {
   eyebrow: "AI Systems Engineer",
-  headline: "I build the trust layer for autonomous AI.",
+  headline: "I build AI you can trust to act.",
   subhead:
     "AI agents can now browse, pay, delete data and sign deals. I build the systems that decide what they're allowed to do: runtime guardrails, payment gates and governed data operations, where deterministic code has the final say instead of a model's guess.",
   proofStrip: [
@@ -60,15 +60,15 @@ export const THESIS_CONTENT = {
 
 export const MANIFESTO_CONTENT = {
   heading: "How I build",
-  statementLines: ["Models suggest.", "Code decides.", "Every action is auditable."],
+  statementLines: ["Start with the problem.", "Build the whole product.", "Make it safe to rely on."],
   body: [
     "I'm drawn to the point where AI stops being a demo and starts taking real actions. That's where the important engineering happens: deciding what a system is allowed to do, proving what it did, and making mistakes reversible. My working rule is that models can suggest, but code decides.",
     "I work across the stack, from Rust inference engines and FastAPI services to Next.js products. Five of these products have live demos, so you can try them yourself rather than take my word for it.",
   ],
   focusAreas: [
-    "AI agent security and runtime governance",
-    "Agentic commerce and auditable automation",
-    "Applied ML: computer vision and accessibility",
+    "Applied AI for real users: healthcare, education, retail",
+    "Industrial AI and decision systems",
+    "Safe, auditable AI agents and payments",
     "Full-stack product engineering",
   ],
 };
@@ -80,9 +80,9 @@ export const RECOGNITION_COUNTERS = [
 ];
 
 export const CONTACT_CONTENT = {
-  heading: "Building agents that need guardrails?",
+  heading: "Have a real problem AI should solve?",
   subhead:
-    "I'm looking for AI Engineering, AI Systems, and Forward-Deployed Engineering roles at teams shipping autonomous AI into production. Let's talk.",
+    "I'm looking for AI Engineering, Applied AI, and Forward-Deployed Engineering roles at teams turning AI into products people actually rely on. Let's talk.",
   email: "hashvanthh21@gmail.com",
   phone: "+91 94426 43650",
   github: "https://github.com/hashmessi",

@@ -17,19 +17,21 @@ const display = Archivo({ subsets: ["latin"], weight: "variable", axes: ["wdth"]
 const jetbrains = JetBrains_Mono({ subsets: ["latin"], display: "swap", variable: "--font-jetbrains" });
 
 export const metadata: Metadata = {
-  title: "Hashvanth M U | Trust Layer for Autonomous AI",
+  title: "Hashvanth M U | AI Systems Engineer",
   description:
-    "AI agents can now browse, pay, delete data and sign deals. I build the systems that decide what they're allowed to do: runtime guardrails, payment gates and governed data operations.",
+    "I build AI that solves real problems: healthcare accessibility, industrial process intelligence, computer vision, and safe, auditable AI agents.",
   keywords: [
     "AI Systems Engineer",
     "Autonomous AI",
     "AI Security",
+    "Applied AI",
+    "Industrial AI",
     "Runtime Guardrails",
-    "Trust Layer",
     "ChainBreak",
     "TrustPulse",
     "PromiseLoop",
     "Warden-MCP",
+    "Guardian",
   ],
   authors: [{ name: "Hashvanth M U", url: "https://github.com/hashmessi" }],
 };

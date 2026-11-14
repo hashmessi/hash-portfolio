@@ -172,3 +172,58 @@
   --color-block: #ff453a;
   --color-award: #ffd60a;
 }
+
+/* Hero pixel stage. The global reduced-motion rule above stills every animation here. */
+.pixel-screen {
+  /* faint scanlines, so the panel reads as a screen rather than a card */
+  background-image: repeating-linear-gradient(to bottom, rgba(255, 255, 255, 0.035) 0 1px, transparent 1px 3px);
+}
+.pixel-bubble {
+  /* stepped pixel border instead of a smooth rounded one */
+  box-shadow: 0 -2px 0 var(--ink), 0 2px 0 var(--ink), -2px 0 0 var(--ink), 2px 0 0 var(--ink), 2px 2px 0 2px rgba(7, 7, 7, 0.18);
+}
+/* two-step pixel tail pointing down-left at the head */
+.pixel-bubble::before,
+.pixel-bubble::after {
+  content: "";
+  position: absolute;
+  background: var(--paper);
+  box-shadow: 0 0 0 2px var(--ink);
+}
+.pixel-bubble::before {
+  width: 6px;
+  height: 6px;
+  left: -4px;
+  bottom: -10px;
+}
+.pixel-bubble::after {
+  width: 4px;
+  height: 4px;
+  left: -14px;
+  bottom: -18px;
+}
+.pixel-bob {
+  animation: pixel-bob 1.6s steps(1, end) infinite;
+}
+@keyframes pixel-bob {
+  50% {
+    transform: translateY(-3px);
+  }
+}
+.pixel-row-in {
+  animation: pixel-row-in 0.36s steps(3, end);
+}
+@keyframes pixel-row-in {
+  from {
+    opacity: 0.35;
+    transform: translateY(6px);
+  }
+}
+.pixel-blink {
+  animation: pixel-blink 1.2s steps(1, end) infinite;
+}
+@keyframes pixel-blink {
+  50% {
+    opacity: 0;
+  }
+}
