@@ -1,7 +1,7 @@
 export interface Project {
   id: string;
   slug: string;
-  tier: "signature" | "applied" | "more";
+  tier: "signature" | "applied" | "more" | "industry";
   name: string;
   award?: string;
   /** Team size and personal contribution, e.g. "Team of 3 · I built the scoring engine". Rendered only when set. */
@@ -83,7 +83,8 @@ export const CONTACT_CONTENT = {
   heading: "Building agents that need guardrails?",
   subhead:
     "I'm looking for AI Engineering, AI Systems, and Forward-Deployed Engineering roles at teams shipping autonomous AI into production. Let's talk.",
-  email: "hashvanth2104@gmail.com",
+  email: "hashvanthh21@gmail.com",
+  phone: "+91 94426 43650",
   github: "https://github.com/hashmessi",
   linkedin: "https://www.linkedin.com/in/hashvanth-m-u-29470725a/",
 };
@@ -196,33 +197,11 @@ export const PROJECTS: Project[] = [
     visual: "blast-radius",
   },
 
-  // ── 02. APPLIED AI ────────────────────────────────────────────────────────
+  // ── 02. INDUSTRY INNOVATION ───────────────────────────────────────────────
   {
     id: "05",
-    slug: "maruthuva-tsl",
-    tier: "applied",
-    name: "Maruthuva TSL",
-    oneLiner: "A two-way communication bridge between Deaf patients and doctors, built on Tamil Sign Language.",
-    problem:
-      "Deaf and non-speaking patients often can't describe their symptoms or understand urgent instructions in a clinic. Interpreters are rarely available when they're needed most.",
-    whatIBuilt:
-      "Maruthuva TSL recognizes Tamil Sign Language from the patient and turns it into Tamil or English speech and text for the clinician. The doctor's spoken or typed reply comes back to the patient through an interactive sign-language avatar.",
-    outcomes: [
-      "Gesture recognition built on hand landmarks (MediaPipe), with medical-vocabulary workflows",
-      "Tamil and English voice and text output through Sarvam AI and AI4Bharat",
-      "Rule-based safety flows for critical medical exchanges",
-    ],
-    scopeNote:
-      "This is an assistive communication tool, not a diagnostic system. It helps patients and clinicians understand each other and leaves every clinical decision to the clinician.",
-    stack: ["Python", "MediaPipe", "Sarvam AI", "AI4Bharat", "JavaScript"],
-    links: {
-      github: "https://github.com/hashvanth21/MaruthuvaTSL",
-    },
-  },
-  {
-    id: "06",
     slug: "guardian",
-    tier: "applied",
+    tier: "industry",
     name: "Guardian",
     metric: {
       label: "Simulated compound-drift scenario: 93.9% lower modeled loss",
@@ -250,6 +229,30 @@ export const PROJECTS: Project[] = [
       github: "https://github.com/hashmessi/guardian",
     },
     visual: "drift-guard",
+  },
+
+  // ── 03. APPLIED AI ────────────────────────────────────────────────────────
+  {
+    id: "06",
+    slug: "maruthuva-tsl",
+    tier: "applied",
+    name: "Maruthuva TSL",
+    oneLiner: "A two-way communication bridge between Deaf patients and doctors, built on Tamil Sign Language.",
+    problem:
+      "Deaf and non-speaking patients often can't describe their symptoms or understand urgent instructions in a clinic. Interpreters are rarely available when they're needed most.",
+    whatIBuilt:
+      "Maruthuva TSL recognizes Tamil Sign Language from the patient and turns it into Tamil or English speech and text for the clinician. The doctor's spoken or typed reply comes back to the patient through an interactive sign-language avatar.",
+    outcomes: [
+      "Gesture recognition built on hand landmarks (MediaPipe), with medical-vocabulary workflows",
+      "Tamil and English voice and text output through Sarvam AI and AI4Bharat",
+      "Rule-based safety flows for critical medical exchanges",
+    ],
+    scopeNote:
+      "This is an assistive communication tool, not a diagnostic system. It helps patients and clinicians understand each other and leaves every clinical decision to the clinician.",
+    stack: ["Python", "MediaPipe", "Sarvam AI", "AI4Bharat", "JavaScript"],
+    links: {
+      github: "https://github.com/hashvanth21/MaruthuvaTSL",
+    },
   },
   {
     id: "07",
@@ -299,7 +302,7 @@ export const PROJECTS: Project[] = [
     },
   },
 
-  // ── 03. MORE BUILDS ───────────────────────────────────────────────────────
+  // ── 04. MORE BUILDS ───────────────────────────────────────────────────────
   {
     id: "09",
     slug: "dealclose",
@@ -346,4 +349,3 @@ export const PROJECTS: Project[] = [
     },
   },
 ];
-

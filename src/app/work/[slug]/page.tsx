@@ -158,7 +158,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
 
       <section aria-labelledby="more-work" className="page mt-s9 flex flex-col gap-s6">
         <RuledHeading id="more-work" title="More work." />
-        <div className="grid gap-x-s5 gap-y-s7 md:grid-cols-2">
+        <div className="grid grid-cols-1 gap-x-s5 gap-y-s7 md:grid-cols-2">
           {others.map((p) => (
             <ExhibitTile key={p.slug} name={p.name} href={`/work/${p.slug}`} descriptor={p.oneLiner}>
               <Exhibit project={p} />

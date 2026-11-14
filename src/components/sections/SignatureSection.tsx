@@ -26,7 +26,7 @@ export default function SignatureSection() {
     <section id="signature-work" aria-labelledby="signature-title" className="page py-s9 flex flex-col gap-s6">
       <RuledHeading id="signature-title" title="The trust layer for autonomous AI." />
       <p className="type-reading max-w-[836px] text-ink-2">{THESIS_CONTENT.subtext}</p>
-      <div className="grid gap-x-s5 gap-y-s7 md:grid-cols-2">
+      <div className="grid grid-cols-1 gap-x-s5 gap-y-s7 md:grid-cols-2">
         {tile(first, true)}
         {rest.map((p) => tile(p))}
       </div>

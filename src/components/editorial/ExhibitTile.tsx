@@ -24,12 +24,7 @@ export function ExhibitTile({
 }) {
   return (
     <figure className={cn("flex flex-col", wide && "md:col-span-2")}>
-      <div className="relative rounded-media overflow-hidden bg-ink">
-        {tag && (
-          <span className="absolute top-s3 right-s3 z-10 type-small bg-paper text-ink border border-ink rounded-tag px-3 py-1 hidden sm:block">
-            {tag}
-          </span>
-        )}
+      <div className="rounded-media overflow-hidden bg-ink">
         {children}
       </div>
       <figcaption className="mt-s3 flex flex-col gap-1">
@@ -42,7 +37,7 @@ export function ExhibitTile({
           </Link>
           <span className="type-body"> — {descriptor}</span>
         </span>
-        {tag && <span className="type-small text-ink-2 sm:hidden">{tag}</span>}
+        {tag && <span className="type-small text-ink-2">{tag}</span>}
       </figcaption>
     </figure>
   );

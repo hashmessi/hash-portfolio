@@ -4,6 +4,7 @@ import { TextLink } from "./TextLink";
 
 const COLUMNS = [
   { label: "Email", href: `mailto:${CONTACT_CONTENT.email}`, text: CONTACT_CONTENT.email },
+  { label: "Phone", href: `tel:${CONTACT_CONTENT.phone.replace(/\s/g, "")}`, text: CONTACT_CONTENT.phone },
   { label: "GitHub", href: CONTACT_CONTENT.github, text: "@hashmessi" },
   { label: "LinkedIn", href: CONTACT_CONTENT.linkedin, text: "Hashvanth M U" },
 ];
@@ -27,7 +28,7 @@ export function ClosingPanel({ surround = "paper" }: { surround?: "paper" | "gre
             <p className="type-small text-ink-2-rev">Availability</p>
             <p className="type-body">{CONTACT_CONTENT.subhead}</p>
           </div>
-          <ul className="grid gap-s3 sm:grid-cols-[minmax(0,1.8fr)_1fr_1fr]">
+          <ul className="grid gap-s3 sm:grid-cols-2 xl:grid-cols-[minmax(0,1.6fr)_minmax(0,1.2fr)_1fr_1fr]">
             {COLUMNS.map((c) => (
               <li key={c.label} className="flex flex-col gap-1 type-small">
                 <span className="text-ink-2-rev">{c.label}</span>

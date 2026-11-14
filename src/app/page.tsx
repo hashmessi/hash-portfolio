@@ -1,7 +1,7 @@
 import HeroSection from "@/components/sections/HeroSection";
 import ThesisSection from "@/components/sections/ThesisSection";
 import SignatureSection from "@/components/sections/SignatureSection";
-import AppliedAISection, { MoreBuildsSection } from "@/components/sections/AppliedAISection";
+import AppliedAISection, { MoreBuildsSection, IndustrySection } from "@/components/sections/AppliedAISection";
 import ManifestoSection from "@/components/sections/ManifestoSection";
 import { ClosingPanel } from "@/components/editorial/ClosingPanel";
 
@@ -12,6 +12,7 @@ export default function Home() {
       <HeroSection />
       <ThesisSection />
       <SignatureSection />
+      <IndustrySection />
       <AppliedAISection />
       <MoreBuildsSection />
       <ManifestoSection />
